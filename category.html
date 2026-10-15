@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% set active_page = 'works' %}
+{% block title %}{{ cat.title }} — Komal Jaiswal{% endblock %}
+{% block content %}
+<style>
+.cat-wrap{max-width:1100px;margin:0 auto;padding:2rem 2rem 7rem}
+.cat-meta{display:flex;align-items:center;gap:1rem;justify-content:center;margin-bottom:3rem;flex-wrap:wrap}
+.cat-meta .icon{font-size:2.2rem}
+.cat-meta .count{font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:5px 12px;border-radius:999px;font-weight:700}
+.posts{display:grid;grid-template-columns:1fr;gap:1.2rem}
+.post-card{display:block;text-decoration:none;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:2rem;transition:all .3s}
+.post-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow)}
+.post-card .tag{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:.5rem;display:block}
+.post-card h2{font-size:1.4rem;margin-bottom:.4rem}
+.post-card .client{font-size:.88rem;color:var(--muted);margin-bottom:.8rem;font-style:italic}
+.post-card .summary{color:var(--muted);font-size:.96rem;line-height:1.7}
+.post-card .read{margin-top:1rem;color:var(--accent);font-weight:600;font-size:.9rem;display:inline-block}
+.empty{text-align:center;padding:5rem 2rem;background:var(--card);border:1px dashed var(--line);border-radius:var(--r);color:var(--muted)}
+.empty a{color:var(--accent);font-weight:600}
+.back{display:inline-block;margin-bottom:2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+.back:hover{color:var(--accent)}
+@media(max-width:960px){.cat-wrap{padding:2rem 1.5rem 5rem}}
+</style>
+<section class="page-head">
+  <p class="eyebrow">Portfolio / {{ cat.title }}</p>
+  <h1>{{ cat.title }}</h1>
+  <p class="lede">{{ cat.desc }}</p>
+</section>
+<section class="cat-wrap">
+  <a class="back" href="/works">← All categories</a>
+  <div class="cat-meta">
+    <span class="icon">{{ cat.icon }}</span>
+    <span class="count">{{ posts|length }} post{{ '' if posts|length == 1 else 's' }}</span>
+  </div>
+  {% if posts %}
+  <div class="posts">
+    {% for p in posts %}
+    <a class="post-card" href="/works/{{ cat_key }}/{{ p['id'] }}">
+      <span class="tag">{{ cat.title }}</span>
+      <h2>{{ p['title'] }}</h2>
+      {% if p['client'] %}<p class="client">— {{ p['client'] }}</p>{% endif %}
+      {% if p['summary'] %}<p class="summary">{{ p['summary'] }}</p>{% endif %}
+      <span class="read">Read more →</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty">
+    <p>No posts in this category yet.</p>
+    <p style="margin-top:.6rem"><a href="/login">Sign in as admin</a> to add the first one.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

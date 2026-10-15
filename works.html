@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% set active_page = 'works' %}
+{% block title %}Works — Komal Jaiswal{% endblock %}
+{% block content %}
+<style>
+.works-wrap{max-width:1100px;margin:0 auto;padding:2rem 2rem 7rem}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem}
+.cat-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:2rem;text-decoration:none;color:var(--text);transition:all .35s;display:flex;flex-direction:column;gap:.7rem;position:relative}
+.cat-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:var(--shadow)}
+.cat-icon{font-size:1.8rem}
+.cat-card h3{font-size:1.2rem}
+.cat-card p{color:var(--muted);font-size:.92rem;flex:1}
+.cat-count{display:inline-block;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:999px;font-weight:700;align-self:flex-start}
+.cta{padding:7rem 2rem;text-align:center;max-width:800px;margin:0 auto}
+@media(max-width:960px){.works-wrap,.cta{padding:4rem 1.5rem}}
+</style>
+<section class="page-head">
+  <p class="eyebrow">Portfolio</p>
+  <h1>Selected works.</h1>
+  <p class="lede">Browse by category. Each one opens a dedicated page with every post.</p>
+</section>
+<section class="works-wrap">
+  <div class="cat-grid">
+    {% for key, c in categories.items() %}
+      {% set n = counts.get(key, 0) %}
+      <a href="/works/{{ key }}" class="cat-card">
+        <span class="cat-icon">{{ c.icon }}</span>
+        <h3>{{ c.title }}</h3>
+        <p>{{ c.desc }}</p>
+        <span class="cat-count">{{ n }} post{{ '' if n == 1 else 's' }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+<section class="cta">
+  <h2>Like what you see?</h2><p>Let's add your brand to this list.</p>
+  <a href="/connect" class="btn btn-dark">Work With Me</a>
+</section>
+{% endblock %}

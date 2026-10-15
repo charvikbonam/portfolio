@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% set active_page = 'works' %}
+{% block title %}{{ post['title'] }} — {{ cat.title }}{% endblock %}
+{% block content %}
+<style>
+.post-wrap{max-width:760px;margin:0 auto;padding:2rem 2rem 7rem}
+.back{display:inline-block;margin-bottom:2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+.back:hover{color:var(--accent)}
+.post-header{text-align:center;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--line)}
+.post-header .tag{display:inline-block;font-size:.74rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:5px 12px;border-radius:999px;font-weight:700;margin-bottom:1rem}
+.post-header h1{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:1rem}
+.post-header .client{color:var(--muted);font-style:italic;font-size:.95rem}
+.post-body{font-family:'Fraunces',serif;font-size:1.05rem;line-height:1.9;color:var(--text);white-space:pre-line}
+.post-body a{color:var(--accent)}
+.post-cta{text-align:center;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.external-link{display:inline-block;margin-top:1.5rem;padding:.7rem 1.4rem;background:var(--accent-soft);color:var(--accent);text-decoration:none;border-radius:999px;font-weight:600;font-size:.9rem}
+.external-link:hover{background:var(--accent);color:#fff}
+@media(max-width:960px){.post-wrap{padding:2rem 1.5rem 5rem}}
+</style>
+<article class="post-wrap">
+  <a class="back" href="/works/{{ cat_key }}">← Back to {{ cat.title }}</a>
+  <header class="post-header">
+    <span class="tag">{{ cat.icon }} {{ cat.title }}</span>
+    <h1>{{ post['title'] }}</h1>
+    {% if post['client'] %}<p class="client">— {{ post['client'] }}</p>{% endif %}
+  </header>
+  {% if post['summary'] %}
+    <p style="font-size:1.15rem;color:var(--muted);margin-bottom:2rem;font-style:italic;text-align:center">{{ post['summary'] }}</p>
+  {% endif %}
+  <div class="post-body">{{ post['body'] }}</div>
+  {% if post['link'] %}
+    <div style="text-align:center"><a class="external-link" href="{{ post['link'] }}" target="_blank" rel="noopener">View original →</a></div>
+  {% endif %}
+  <div class="post-cta">
+    <p style="color:var(--muted)">Want something like this for your brand?</p>
+    <a href="/connect" class="btn btn-dark" style="margin-top:1rem">Get in Touch</a>
+  </div>
+</article>
+{% endblock %}

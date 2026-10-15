@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% set active_page = 'home' %}
+{% block title %}Komal Jaiswal — Content Writer & Ad Strategist{% endblock %}
+{% block content %}
+<style>
+.hero{display:grid;grid-template-columns:1.35fr 1fr;gap:4rem;max-width:1300px;margin:0 auto;padding:5rem 3rem 4rem;align-items:center}
+.hero h1{font-size:clamp(2.4rem,4.8vw,4.4rem);margin-bottom:1.6rem}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.8rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.stats strong{display:block;font-family:'Fraunces',serif;font-size:1.7rem;color:var(--text)}
+.stats span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px}
+.hero-side{display:flex;flex-direction:column;gap:1.2rem}
+.photo-hero{position:relative;width:260px;height:260px;margin:0 auto .5rem;border-radius:50%;padding:8px;background:linear-gradient(135deg,var(--accent-soft),var(--bg));box-shadow:var(--shadow-lg);animation:floaty 6s ease-in-out infinite}
+.photo-hero img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:4px solid #fff;filter:saturate(1.05) contrast(1.02)}
+.photo-ring{position:absolute;inset:-14px;border-radius:50%;border:1.5px dashed rgba(176,122,18,.35);animation:spin 30s linear infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.side-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.4rem 1.6rem;box-shadow:var(--shadow-sm);transition:all .35s}
+.side-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.badge{display:inline-block;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:999px;font-weight:700;margin-bottom:.6rem}
+.side-card p{font-size:.94rem;line-height:1.55}
+.strip{background:var(--text);color:var(--bg);padding:1.4rem 0;overflow:hidden}
+.strip-track{display:flex;gap:2rem;white-space:nowrap;animation:scroll 30s linear infinite;font-family:'Fraunces',serif;font-size:1.25rem;font-style:italic}
+.strip-track i{color:var(--accent);font-style:normal}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.cat-section{max-width:1100px;margin:0 auto;padding:6rem 2rem}
+.cat-section .section-head{text-align:center;margin-bottom:4rem}
+.cat-section h2{font-size:clamp(1.8rem,3.6vw,3rem)}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem}
+.cat-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:2rem;text-decoration:none;color:var(--text);transition:all .3s;display:flex;flex-direction:column;gap:.6rem}
+.cat-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:var(--shadow)}
+.cat-icon{font-size:1.8rem}
+.cat-card h3{font-size:1.15rem}
+.cat-card p{color:var(--muted);font-size:.9rem}
+.cta{padding:7rem 2rem;text-align:center;max-width:800px;margin:0 auto}
+.cta h2{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:1.2rem}
+.cta p{color:var(--muted);margin-bottom:2.4rem;font-size:1.08rem}
+@media(max-width:960px){.hero{grid-template-columns:1fr;padding:4rem 1.5rem 3rem;text-align:center;gap:3rem}.hero-cta{justify-content:center}.stats{max-width:520px;margin:0 auto}.photo-hero{width:220px;height:220px}.cat-section,.cta{padding:4rem 1.5rem}}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+<section class="hero">
+  <div>
+    <p class="eyebrow">Portfolio · 2025</p>
+    <h1>Words that <em>sell.</em><br>Stories that <em>stick.</em></h1>
+    <p class="lede" style="margin-bottom:2rem;max-width:560px">I'm Komal Jaiswal — a content writer and ad strategist blending human storytelling with data-driven copy.</p>
+    <div class="hero-cta">
+      <a href="/works" class="btn btn-dark">View Work</a>
+      <a href="/connect" class="btn btn-ghost">Let's Talk</a>
+    </div>
+    <div class="stats">
+      <div><strong>100+</strong><span>Pieces Written</span></div>
+      <div><strong>40+</strong><span>Ad Campaigns</span></div>
+      <div><strong>25+</strong><span>Clients</span></div>
+      <div><strong>3 yrs</strong><span>Experience</span></div>
+    </div>
+  </div>
+  <div class="hero-side">
+    <div class="photo-hero"><img src="/static/img/komal.png" alt="Komal"><span class="photo-ring"></span></div>
+    <div class="side-card"><span class="badge">Currently</span><p>Writing high-converting ad copy for D2C brands.</p></div>
+    <div class="side-card"><span class="badge">Specialty</span><p>Meta ads · Newsletters · Short-form scripts</p></div>
+    <div class="side-card"><span class="badge">Philosophy</span><p>Every word must earn its place.</p></div>
+  </div>
+</section>
+<section class="strip">
+  <div class="strip-track">
+    <span>Content Writing</span><i>◆</i><span>Meta Ads</span><i>◆</i><span>Ad Campaigns</span><i>◆</i><span>Newsletters</span><i>◆</i><span>Short-form Scripts</span><i>◆</i><span>Static Ads</span><i>◆</i><span>Blogs</span><i>◆</i><span>Articles</span><i>◆</i>
+    <span>Content Writing</span><i>◆</i><span>Meta Ads</span><i>◆</i><span>Ad Campaigns</span><i>◆</i><span>Newsletters</span><i>◆</i><span>Short-form Scripts</span><i>◆</i><span>Static Ads</span><i>◆</i><span>Blogs</span><i>◆</i><span>Articles</span><i>◆</i>
+  </div>
+</section>
+<section class="cat-section">
+  <div class="section-head"><p class="eyebrow">Portfolio</p><h2>Browse by category.</h2></div>
+  <div class="cat-grid">
+    {% for key, c in categories.items() %}
+      <a href="/works/{{ key }}" class="cat-card">
+        <span class="cat-icon">{{ c.icon }}</span>
+        <h3>{{ c.title }}</h3>
+        <p>{{ c.desc }}</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+<section class="cta">
+  <h2>Have a project in mind?</h2><p>Let's turn your ideas into words that work.</p>
+  <a href="/connect" class="btn btn-dark">Start a Conversation</a>
+</section>
+{% endblock %}

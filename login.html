@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<style>
+.login-wrap{max-width:420px;margin:0 auto;padding:6rem 2rem 7rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:3rem 2.5rem;box-shadow:var(--shadow)}
+.card h1{font-size:1.6rem;text-align:center;margin-bottom:.5rem}
+.card .sub{text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:2rem}
+form{display:flex;flex-direction:column;gap:1.1rem}
+label{display:flex;flex-direction:column;gap:.4rem;font-size:.82rem;font-weight:600}
+input{padding:.95rem 1.1rem;border:1.5px solid var(--line);border-radius:12px;font-size:.95rem;font-family:inherit;background:var(--bg-alt);color:var(--text);transition:all .25s}
+input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(176,122,18,.10)}
+.hint{text-align:center;color:var(--muted);font-size:.82rem;margin-top:1.5rem}
+</style>
+<div class="login-wrap">
+  <div class="card">
+    <h1>Admin sign-in</h1>
+    <p class="sub">Sign in to manage your portfolio posts.</p>
+    <form method="POST">
+      <label>Username<input name="username" required autofocus></label>
+      <label>Password<input name="password" type="password" required></label>
+      <button type="submit" class="btn btn-dark full">Sign in</button>
+    </form>
+    <p class="hint">Credentials are set in your <code>.env</code> file.</p>
+  </div>
+</div>
+{% endblock %}

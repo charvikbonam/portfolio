@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit post' if post else 'New post' }} — Admin{% endblock %}
+{% block content %}
+<style>
+.edit-wrap{max-width:760px;margin:0 auto;padding:3rem 2rem 7rem}
+.edit-head{margin-bottom:2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.edit-head h1{font-size:1.8rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:3rem 2.5rem;box-shadow:var(--shadow)}
+form{display:flex;flex-direction:column;gap:1.3rem}
+label{display:flex;flex-direction:column;gap:.5rem;font-size:.82rem;font-weight:600;letter-spacing:.3px}
+input,textarea,select{padding:1rem 1.2rem;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;font-size:.95rem;background:var(--bg-alt);color:var(--text);transition:all .25s;resize:vertical}
+select{cursor:pointer}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(176,122,18,.10)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+.btn-sm{padding:.7rem 1.4rem;border-radius:999px;font-size:.88rem;font-weight:600;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-family:inherit;transition:all .25s;display:inline-block}
+.btn-save{background:var(--text);color:var(--bg)}
+.btn-save:hover{background:var(--accent)}
+.btn-cancel{background:transparent;border-color:var(--line);color:var(--text)}
+.btn-cancel:hover{border-color:var(--accent);color:var(--accent)}
+.help{color:var(--muted);font-size:.82rem;margin-top:.3rem;font-weight:400}
+@media(max-width:720px){.row{grid-template-columns:1fr}.card{padding:2rem 1.6rem}}
+</style>
+<div class="edit-wrap">
+  <div class="edit-head">
+    <h1>{{ 'Edit post' if post else 'New post' }}</h1>
+    <a href="/admin" class="btn-sm btn-cancel">← Back to admin</a>
+  </div>
+  <div class="card">
+    <form method="POST">
+      <label>Category *
+        <select name="category" required>
+          {% for k, c in categories.items() %}
+            <option value="{{ k }}" {% if post and post['category']==k %}selected{% endif %}>{{ c.icon }} {{ c.title }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Title *
+        <input name="title" required value="{{ post['title'] if post else '' }}" placeholder="e.g. How I wrote 30 Meta ads in 3 days">
+      </label>
+      <div class="row">
+        <label>Client / Brand<input name="client" value="{{ post['client'] if post else '' }}" placeholder="e.g. Acme Co."></label>
+        <label>External link<input name="link" value="{{ post['link'] if post else '' }}" placeholder="https://..."></label>
+      </div>
+      <label>Short summary
+        <textarea name="summary" rows="2" placeholder="One line shown on the category page.">{{ post['summary'] if post else '' }}</textarea>
+        <span class="help">Appears under the title on the category listing.</span>
+      </label>
+      <label>Full content *
+        <textarea name="body" rows="14" required placeholder="Write the full post here. Line breaks are preserved.">{{ post['body'] if post else '' }}</textarea>
+      </label>
+      <div class="actions">
+        <button type="submit" class="btn-sm btn-save">{{ 'Save changes' if post else 'Publish post' }}</button>
+        <a href="/admin" class="btn-sm btn-cancel">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

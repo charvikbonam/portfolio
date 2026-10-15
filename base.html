@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}Komal Jaiswal{% endblock %}</title>
+{% include "_styles.html" %}
+</head>
+<body>
+{% set active_page = active_page|default('') %}
+{% include "_nav.html" %}
+{% with msgs = get_flashed_messages(with_categories=true) %}
+  {% if msgs %}<div class="flashes">
+    {% for cat, msg in msgs %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}
+  </div>{% endif %}
+{% endwith %}
+<main>{% block content %}{% endblock %}</main>
+{% include "_footer.html" %}
+{% block scripts %}{% endblock %}
+</body>
+</html>

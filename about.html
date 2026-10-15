@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% set active_page = 'about' %}
+{% block title %}About — Komal Jaiswal{% endblock %}
+{% block content %}
+<style>
+.about-layout{max-width:900px;margin:0 auto;padding:2rem 2rem 7rem;display:flex;flex-direction:column;gap:2.5rem}
+.profile{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:3rem 2rem;text-align:center;box-shadow:var(--shadow);max-width:520px;margin:0 auto;width:100%}
+.photo-frame{position:relative;width:190px;height:190px;margin:0 auto 1.6rem;border-radius:50%;padding:6px;background:linear-gradient(135deg,var(--accent-soft),#fff);box-shadow:0 10px 30px rgba(176,122,18,.15)}
+.photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:3px solid #fff}
+.photo-frame::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1.5px dashed rgba(176,122,18,.3)}
+.profile h3{font-size:1.5rem;margin-top:.4rem}
+.profile .role{color:var(--muted);font-size:.9rem;margin-bottom:2rem}
+.profile ul{list-style:none;text-align:left;border-top:1px solid var(--line);padding-top:1.8rem;display:flex;flex-direction:column;gap:1rem;max-width:340px;margin:0 auto}
+.profile li{font-size:.92rem;color:var(--muted)}
+.block{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:3rem 2.5rem}
+.block h2{font-size:1.5rem;margin-bottom:1.5rem;text-align:center;padding-bottom:1.2rem;border-bottom:1px solid var(--line)}
+.story-text{font-family:'Fraunces',serif;font-size:1.02rem;line-height:1.9;color:var(--text);white-space:pre-line}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+.value{padding:1.5rem;border:1px solid var(--line);border-radius:12px;transition:all .3s;background:var(--bg-alt)}
+.value:hover{border-color:var(--accent);transform:translateY(-3px);background:#fff}
+.value h4{font-size:1.02rem;margin-bottom:.5rem;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0}
+.value p{color:var(--muted);font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
+.chips span{padding:.55rem 1.1rem;background:var(--bg-alt);border:1px solid var(--line);border-radius:999px;font-size:.88rem;transition:all .25s;color:var(--muted)}
+.chips span:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-2px)}
+.cta{padding:7rem 2rem;text-align:center;max-width:800px;margin:0 auto}
+@media(max-width:960px){.about-layout{padding:2rem 1.5rem 5rem}.block{padding:2.2rem 1.6rem}}
+@media(max-width:720px){.photo-frame{width:150px;height:150px}.profile{padding:2.2rem 1.4rem}}
+</style>
+<section class="page-head">
+  <p class="eyebrow">About</p>
+  <h1>The person behind the words.</h1>
+  <p class="lede">A storyteller at heart, a strategist by training.</p>
+</section>
+<section class="about-layout">
+  <aside class="profile">
+    <div class="photo-frame"><img src="/static/img/komal.png" alt="Komal"></div>
+    <h3>Komal Jaiswal</h3>
+    <p class="role">Content Writer · Ad Strategist</p>
+    <ul>
+      <li>📍 Based in India</li>
+      <li>💼 3+ years writing</li>
+      <li>✍️ 100+ published pieces</li>
+      <li>🎯 Meta Ads specialist</li>
+    </ul>
+  </aside>
+  <div class="about-main">
+    <div class="block">
+      <h2>My Story</h2>
+      <p class="story-text">
+     I’ve spent most of my career writing as other people.
+
+That started in academic work, where I produced well over a thousand pieces across law, management, media and finance — each one in a register that wasn’t mine, to standards set in the UK, US and Canada, on subjects I had a week to understand properly. It teaches you two things quickly. The first is research: how to get from knowing nothing about a topic to writing something a specialist won’t wince at. The second is voice — how to disappear into someone else’s way of thinking and sound like them on the page.
+
+Both turned out to be the whole job.
+
+Since then I’ve written for a Canadian law firm, explaining immigration rulings and family-law judgments to people whose lives depended on reading them correctly. For a property developer, where one message had to work as a landing page, a newsletter, a flier and a thirty-second reel. For a software company documenting APIs. And for founders and specialists whose thought leadership ran in The Week, Hindustan Times, Deccan Herald and Mid-Day under their names, not mine.
+
+Somewhere in there I stopped being only a writer. At the law firm I designed the website’s content architecture — which pages exist, what each is for, how someone with a custody question finds the page that answers it. I wrote the firm-wide emails that went out over the managing partner’s signature when a new lawyer joined. I ran content audits and set editorial standards for other writers. The work moved from producing pages to deciding which pages should exist and whether they were any good.
+
+Quality control became its own craft. I’ve spent years reading other people’s drafts and working out what was wrong with them — not line edits, but whether a piece answers the question it claims to, whether the structure holds, whether a reader finishes it knowing something they didn’t.
+
+That’s what I do now at Amazon, where I work on content quality for large language models: writing the editorial guidelines and scoring rubrics that define what good looks like, then judging AI-generated language against them for accuracy, clarity, and whether it actually helps the person who asked. It’s the same instinct I built reviewing academic drafts, pointed at a machine.
+
+I work across the range — content strategy and architecture, long-form editorial, website and landing-page copy, campaigns, internal communications, documentation. The connecting thread isn’t a format. It’s that I can take a subject I don’t know, learn it quickly, work out who’s reading and why, and write it in whatever voice the situation calls for.
+
+What’s below is a sample, not an inventory. Most of what I’ve written carries someone else’s name — which is rather the point.
+
+
+
+Talk about how you got into content writing, what draws you to ad copy and storytelling, brands you've worked with, the wins you're proud of, and the kind of work you love doing most.
+      </p>
+    </div>
+    <div class="block">
+      <h2>What I Value</h2>
+      <div class="grid-2">
+        <div class="value"><h4>Clarity</h4><p>If a sentence needs re-reading, it's not doing its job.</p></div>
+        <div class="value"><h4>Research</h4><p>Great copy starts with deep audience understanding.</p></div>
+        <div class="value"><h4>Respect</h4><p>No fluff. No filler. Every word earns its place.</p></div>
+        <div class="value"><h4>Reliability</h4><p>Good work, on time, every time — no exceptions.</p></div>
+      </div>
+    </div>
+    <div class="block">
+      <h2>Skills</h2>
+      <div class="chips">
+        <span>Copywriting</span><span>Content Strategy</span><span>Meta Ads</span>
+        <span>SEO Writing</span><span>Email Marketing</span><span>Storytelling</span>
+        <span>Notion</span><span>Google Analytics</span><span>Canva</span>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cta">
+  <h2>Sound like a fit?</h2><p>Let's build something worth reading.</p>
+  <a href="/connect" class="btn btn-dark">Get in Touch</a>
+</section>
+{% endblock %}
